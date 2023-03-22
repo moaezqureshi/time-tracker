@@ -1,7 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: aliceblue  ;
+}
 .App {
   text-align: center;
+  background-color: #2c2c2c;
+  height: 100%;
 }
-
+.main{
+  padding: 50px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
