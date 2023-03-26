@@ -5,8 +5,10 @@ import Login from './Components/Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header/Header';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Footer from './Components/Footer/Footer';
 import { useState } from 'react';
 import Register from './Components/Register/Register';
+// import Footer from './Components/Footer/Footer';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -21,6 +23,7 @@ function App() {
 
       </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
