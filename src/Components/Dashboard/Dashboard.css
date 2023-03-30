@@ -1,57 +1,74 @@
-.input-container{
+.container {
+   
+  }
+  
+  .input-container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
     padding: 15px;
-    background-color: rgb(11, 11, 26);
-    border-radius: 10px;
-}
-.input-container #taskName{
-    border: 0 !important;
-    color: #a9a9a9;
-    width: 100%;
-    margin: 0 10px 0 0;
-    background: transparent;
-}
-
-.input-container #taskName:focus{
-    border: 1px solid #262525 !important;
-    box-shadow: none !important;
-    color: #a9a9a9 !important;
-}
-
-.input-container #startDate {
-    border: 1px solid #262525 !important;
-    width: 30%;
-    color: #262525;
-    margin: 0 10px 0 0;
-    background: #a9a9a9;
-}
-.stopwatch-time {
+    background-color: #191919;
+  }
+  
+  .input-container input[type="text"],
+  .input-container input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+  }
+  
+  .timer-container div{
     display: flex;
-    text-align: center;
-    color: #fff;
-    font-size: 26px;
-}
-
-.stopwatch-buttons {
-    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-}
-.stopwatch-buttons p{
-    margin: 0 !important;
-}
-.stopwatch-buttons button {
-    margin: 0 7px ;
-    border: none;
-    padding: 10px 30px;
+    /* background-color: #2d2d2d; */
+    border-radius: 10px;
+    /* width: 400px;
+    height: 80px; */
+  }
+  @media (max-width: 768px) {
+    .input-container{
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .timer-container div{
+        justify-content: space-between;
+        margin-top: 7px;
+    }
+    .timer-container div:first-child{
+        border-right: 1px solid #ddd;
+    }
+  }
+  .timer-container{
+    width: 100%;
+  }
+  .timer-container h1 {
+    font-size: 36px;
+    /* font-weight: bold; */
+    margin-right: 10px;
+    color: #f0f0f0;
+  }
+  
+  .timer-container button {
+    /* background-color: #191919; */
+    border: 1px solid #333333;
+    color: #f0f0f0;
+    font-size: 16px;
+    /* font-weight: bold; */
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    color: #fff;
-}
-
-.stopwatch-buttons button:nth-child(2) {
-    background-color: green;
-}
-
-.stopwatch-buttons button:last-child {
-    background-color: red;
-}
+    transition: background-color 0.3s ease;
+  }
+  
+  .timer-container button:hover {
+    background-color: #333333;
+  }
+  

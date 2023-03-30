@@ -1,78 +1,42 @@
-import userEvent from '@testing-library/user-event';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from "react";
+import TimeTracker from "../TimeTracker";
 import "./Dashboard.css";
 
-function Dashboard(props) {
-  let {userData, setUserdata} = props;
-  // state to store time
+function Dashboard() {
+  // Define state variables for tracking time and the timer status
   const [time, setTime] = useState(0);
-
-  // state to check stopwatch running or not
   const [isRunning, setIsRunning] = useState(false);
 
-  useEffect(() => {
-    let intervalId;
-    if (isRunning) {
-      // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
-      intervalId = setInterval(() => setTime(time + 1), 10);
-    }
-    return () => clearInterval(intervalId);
-  }, [isRunning, time]);
-
-  // Hours calculation
-  const hours = Math.floor(time / 360000);
-
-  // Minutes calculation
-  const minutes = Math.floor((time % 360000) / 6000);
-
-  // Seconds calculation
-  const seconds = Math.floor((time % 6000) / 100);
-
-  // Milliseconds calculation
-  const milliseconds = time % 100;
-
-  // Method to start and stop timer
+  // Toggle the timer status between running and stopped
   const startAndStop = () => {
     setIsRunning(!isRunning);
   };
 
-  // Method to reset timer back to 0
+  // Reset the timer to zero and stop it
   const reset = () => {
+    setIsRunning(false);
     setTime(0);
   };
+
   return (
-    <>
-      <div className="container">
-        <h3>Hello <strong>{userData.name}</strong></h3>
-        <div className="row-reverse">
-            <div className="col-9">
-                <div className="input-container">
-                    <input type="text" name="taskName" id="taskName" className='form-control bg-transparent' placeholder='Enter your task'/>
-
-                    <input type="date" name="startData" id="startDate" className='form-control'/>
-
-                    <div className="stopwatch-container">
-      <div className="stopwatch-buttons">
-      <p className="stopwatch-time">
-        {hours}:{minutes.toString().padStart(2, "0")}:
-        {seconds.toString().padStart(2, "0")}
-        
-      </p>
-        <button className="stopwatch-button" onClick={startAndStop}>
-          {isRunning ? "Stop" : "Start"}
-        </button>
-        <button className="stopwatch-button" onClick={reset}>
-          Reset
-        </button>
-      </div>
-    </div>
-                </div>
-            </div>
-            
+    <div className="container">
+      {/* Display a welcome message */}
+      <h3>Hello, User</h3>
+      {/* Create a container for the task input and timer */}
+      <div className="input-container">
+        {/* Create an input for the task name */}
+        <input type="text" placeholder="Enter task name" />
+        {/* Create an input for the task start date */}
+        <input type="date" />
+        {/* Create a container for the timer */}
+        <div className="timer-container">
+          {/* Render the TimeTracker component */}
+          <TimeTracker time={time} isRunning={isRunning} />
+          
         </div>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
